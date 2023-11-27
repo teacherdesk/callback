@@ -10,13 +10,13 @@
       </body>
       <script>
        function findUrlParameter(parameterName) {
-  let result = null;
-  const searchParams = new URLSearchParams(location.search);
-  if (searchParams.has(parameterName)) {
-    result = searchParams.get(parameterName);
-  }
-  return result;
-}
+        let result = null;
+        const searchParams = new URLSearchParams(location.search);
+        if (searchParams.has(parameterName)) {
+          result = searchParams.get(parameterName);
+        }
+        return result;
+      }
 
 function redirectToDesktop() {
   const idToken = findUrlParameter("id_token");
