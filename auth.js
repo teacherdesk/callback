@@ -21,4 +21,24 @@ document.addEventListener("DOMContentLoaded", function () {
         // 액세스 토큰이 없는 경우 오류 처리 또는 다른 작업 수행
         console.error('Access token not found in the URL hash.');
     }
+  function findUrlParameter(parameterName) {
+  let result = null;
+  const searchParams = new URLSearchParams(location.search);
+  if (searchParams.has(parameterName)) {
+    result = searchParams.get(parameterName);
+  }
+  return result;
+  }
+    
+  function redirectToDesktop() {
+  const idToken = findUrlParameter("id_token");
+  const accessToken = findUrlParameter("access_token");
+  const appLinkScheme = "capp";
+  const appLinkAuthority = "forgot";
+  const appLinkUrl = `${appLinkScheme}://${appLinkAuthority}/google-auth?id_token=${idToken}&access_token=${accessToken}`;
+  setTimeout(() => {
+      window.location.href = url;
+  }, 100);
+}
+
 });
