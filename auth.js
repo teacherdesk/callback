@@ -1,34 +1,24 @@
 document.addEventListener("DOMContentLoaded", function () {
-    // URL에서 매개변수 추출
-    const urlParams = new URLSearchParams(window.location.search);
-    const code = urlParams.get('code');
-    const state = urlParams.get('state');
-    const error = urlParams.get('error');
-    const errorDescription = urlParams.get('error_description');
+    // 현재 URL에서 해시 이후의 파라미터 추출
+    const hashParams = new URLSearchParams(window.location.hash.substring(1));
 
-    // 상태 검증
-    const isValidState = validateState(state);
+    const accessToken = hashParams.get('access_token');
+    const expiresIn = hashParams.get('expires_in');
+    const providerRefreshToken = hashParams.get('provider_refresh_token');
+    const providerToken = hashParams.get('provider_token');
+    const refreshToken = hashParams.get('refresh_token');
+    const tokenType = hashParams.get('token_type');
 
-    if (isValidState) {
-        if (code) {
-            // TODO: 권한 부여 코드를 사용하여 액세스 토큰 요청 등의 작업 수행
-            // 여기에 실제로 해야 할 작업을 추가하세요
-            document.body.innerHTML = '<h1>인증이 완료되었습니다!</h1>';
-        } else if (error) {
-            // 오류 처리
-            console.error(`인증 오류: ${error}. ${errorDescription}`);
-            document.body.innerHTML = `<h1>인증 오류: ${error}</h1><p>${errorDescription}</p>`;
-        }
+    if (accessToken) {
+        // TODO: 액세스 토큰을 사용하여 필요한 작업 수행
+        console.log('Access Token:', accessToken);
+        console.log('Expires In:', expiresIn);
+        console.log('Provider Refresh Token:', providerRefreshToken);
+        console.log('Provider Token:', providerToken);
+        console.log('Refresh Token:', refreshToken);
+        console.log('Token Type:', tokenType);
     } else {
-        // 상태가 유효하지 않은 경우
-        console.error('유효하지 않은 상태 매개변수. 가능한 CSRF 공격.');
-        document.body.innerHTML = '<h1>인증 오류: 유효하지 않은 상태</h1>';
+        // 액세스 토큰이 없는 경우 오류 처리 또는 다른 작업 수행
+        console.error('Access token not found in the URL hash.');
     }
 });
-
-function validateState(state) {
-    // TODO: 실제 상태 검증 로직을 구현하세요
-    // 예: 세션 또는 서버에서 상태를 확인
-    const validState = true; // 간단한 예시로 항상 true를 반환하도록 설정
-    return validState;
-}
