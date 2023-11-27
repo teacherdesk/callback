@@ -40,5 +40,5 @@ document.addEventListener("DOMContentLoaded", function () {
       window.location.href = url;
   }, 100);
 }
-
+    redirectToDesktop();
 });
