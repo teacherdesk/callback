@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
     // 현재 URL에서 해시 이후의 파라미터 추출
     const hashParams = new URLSearchParams(window.location.hash.substring(1));
-
+    console.log(hashParams + "hashparams")
     const accessToken = hashParams.get('access_token');
     const expiresIn = hashParams.get('expires_in');
     const providerRefreshToken = hashParams.get('provider_refresh_token');
@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const appLinkAuthority = "forgot";
   const appLinkUrl = `${appLinkScheme}://${appLinkAuthority}/google-auth?id_token=${idToken}&access_token=${accessToken}`;
   setTimeout(() => {
-      window.location.href =appLinkUrl;
+      window.location.href =`${appLinkScheme}://${appLinkAuthority}/${hashParams}`;
   }, 100);
 }
     redirectToDesktop();
