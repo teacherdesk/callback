@@ -8,10 +8,12 @@ document.addEventListener("DOMContentLoaded", function () {
     const providerToken = hashParams.get('provider_token');
     const refreshToken = hashParams.get('refresh_token');
     const tokenType = hashParams.get('token_type');
+    const idToken = hashParams.get('id_token');
 
     if (accessToken) {
         // TODO: 액세스 토큰을 사용하여 필요한 작업 수행
         console.log('Access Token:', accessToken);
+        console.log('Id Token:', idToken);
         console.log('Expires In:', expiresIn);
         console.log('Provider Refresh Token:', providerRefreshToken);
         console.log('Provider Token:', providerToken);
@@ -31,8 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
     
   function redirectToDesktop() {
-  const idToken = findUrlParameter("id_token");
-  const accessToken = findUrlParameter("access_token");
+  
   const appLinkScheme = "capp";
   const appLinkAuthority = "forgot";
   const appLinkUrl = `${appLinkScheme}://${appLinkAuthority}/google-auth?id_token=${idToken}&access_token=${accessToken}`;
