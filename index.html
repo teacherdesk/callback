@@ -1,34 +1,11 @@
 <!DOCTYPE html>
-      <html>
-      <head>
-        <title>This is a title</title>
-      </head>
-      <body>
-        <div>
-            <p>Hello world!</p>
-        </div>
-      </body>
-      <script>
-       function findUrlParameter(parameterName) {
-        let result = null;
-        const searchParams = new URLSearchParams(location.search);
-        if (searchParams.has(parameterName)) {
-          result = searchParams.get(parameterName);
-        }
-        return result;
-      }
-
-function redirectToDesktop() {
-  const idToken = findUrlParameter("id_token");
-  const accessToken = findUrlParameter("access_token");
-  const appLinkScheme = "example-scheme";
-  const appLinkAuthority = "app.example.com";
-  const appLinkUrl = `${appLinkScheme}://${appLinkAuthority}/google-auth?id_token=${idToken}&access_token=${accessToken}`;
-  setTimeout(() => {
-      window.location.href = url;
-  }, 100);
-}
-
-redirectToDesktop();
-      </script>
-      </html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OAuth 리디렉트 처리</title>
+</head>
+<body>
+      <script src="auth.js"> </script>
+</body>
+</html>
