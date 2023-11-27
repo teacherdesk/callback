@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const appLinkAuthority = "forgot";
   const appLinkUrl = `${appLinkScheme}://${appLinkAuthority}/google-auth?id_token=${idToken}&access_token=${accessToken}`;
   setTimeout(() => {
-      window.location.href = url;
+      window.location.href =appLinkUrl;
   }, 100);
 }
     redirectToDesktop();
